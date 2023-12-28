@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 from PyPDF2 import PdfReader
+from dotenv import load_dotenv
 from langchain.llms import OpenAI
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
@@ -10,13 +11,12 @@ from langchain.chains.question_answering import load_qa_chain
 
 # User Interface using streamlit
 
-os.environ['OPENAI_API_KEY'] = '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'
 
 with st.sidebar:
     st.title("Chat with Pdf file in your own way.")
 
 # Uploading pdf file
-
+load_dotenv()
 pdf = st.file_uploader("Upload file", type='pdf')
 
 pdfreader = PdfReader(pdf)
