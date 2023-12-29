@@ -19,10 +19,9 @@ with st.sidebar:
 load_dotenv()
 pdf = st.file_uploader("Upload file", type='pdf')
 
-pdfreader = PdfReader(pdf)
-# st.write(pdfreader)
+if pdf is not None:
+    pdfreader = PdfReader(pdf)
 
-if pdfreader:
     raw_text = ''
     for i, page in enumerate(pdfreader.pages):
         content = page.extract_text()
